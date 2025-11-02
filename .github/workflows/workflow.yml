@@ -1,0 +1,17 @@
+name: terraform-infra-code-generic code
+on: workflow_dispatch
+  
+  
+# on:
+#   push:
+#     branches:
+#       - main
+#       - features/*
+
+permissions:
+  id-token: write
+  issues: read
+
+
+
+      
