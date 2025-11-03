@@ -85,6 +85,7 @@ jobs:
   destroy:
     name: terraform destroy when apply failure
     runs-on: ubuntu-latest
+    environment: dev
     needs: apply
     if: failure()
     steps:
