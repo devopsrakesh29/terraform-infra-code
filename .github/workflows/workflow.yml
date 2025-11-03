@@ -1,8 +1,13 @@
 name: terraform-infra-code-generic code
-on: workflow_dispatch
-  
-  
+on:
+   workflow_dispatch
+    
+
+
 # on:
+#   pull_request:
+#     branches:
+#       - main
 #   push:
 #     branches:
 #       - main
@@ -10,8 +15,64 @@ on: workflow_dispatch
 
 permissions:
   id-token: write
-  issues: read
+  contents: read
+  issues: write
 
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v5.0.0
 
+      - name: azure_login
+        uses: Azure/login@v2.3.0
+        with:  
+          client-id: ${{secrets.AZURE_SECRET_ID}}
+          tenant-id: ${{secrets.AZURE_TENANT_ID}}
+          subscription-id: ${{secrets.AZURE_SUBSCRIPTION_ID}}
+      
+      - name: terraform init
+        working-directory: ./environment/dev
+        run: terraform init    
 
+      - name: terraform fmt
+        working-directory: ./environment/dev
+        run: terraform fmt         
+
+      - name: terraform validate
+        working-directory: ./environment/dev
+        run: terraform validate 
+      
+      - name: terraform plan
+        working-directory: ./environment/dev
+        run: terraform plN -out=tfplan
+        
+  apply:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    environment: dev
+    needs: build 
+    steps:
+      - name: checkout
+        uses: actions/checkout@v5.0.0
+       
+      - name: azure login
+        uses: Azure/login@v2.3.0
+        with:  
+          client-id: ${{secrets.AZURE_SECRET_ID}}
+          tenant-id: ${{secrets.AZURE_TENANT_ID}}
+          subscription-id: ${{secrets.AZURE_SUBSCRIPTION_ID}}
+      
+      - name: terraform init
+        working-directory: ./enviornment/dev
+        run: terraform init
+
+      - name: terraform validate
+        working-directory: ./enviornment/dev
+        run: terraform validate
+
+      - name: terraform apply
+        working-directory: ./enviornment/dev
+        run: terraform apply --auto-approve
       
