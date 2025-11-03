@@ -82,3 +82,32 @@ jobs:
         working-directory: ./environment/dev
         run: terraform apply --auto-approve
       
+  destroy:
+    name: terraform destroy when apply failure
+    runs-on: ubuntu-latest
+    needs: apply
+    if: failure()
+    steps:
+      - name: checkout
+        uses: actions/checkout@v5.0.0
+       
+      - name: azure login
+        uses: Azure/login@v2.3.0
+        with:  
+          client-id: ${{secrets.AZURE_SECRET_ID}}
+          tenant-id: ${{secrets.AZURE_TENANT_ID}}
+          subscription-id: ${{secrets.AZURE_SUBSCRIPTION_ID}}
+
+      - name: terraform-setup
+        uses: hashicorp/setup-terraform@v2.0.3         
+      
+      - name: terraform init
+        working-directory: ./environment/dev
+        run: terraform init
+
+
+
+      - name: terraform destroy
+        working-directory: ./environment/dev
+        run: terraform destroy --auto-approve
+      
