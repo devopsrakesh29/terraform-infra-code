@@ -25,7 +25,7 @@ storage_accounts = {
 
 resource_groups = {
   "rg01" = {
-    name     = "rg01"
+    name     = "rakesh-rg"
     location = "East US"
     tags = {
       environment = "dev"
@@ -43,7 +43,7 @@ virtual_networks = {
   vnet1 = {
     name                = "rakeshvnet01"
     location            = "centralindia"
-    resource_group_name = "rg01"
+    resource_group_name = "rakesh-rg"
     address_space       = ["10.0.0.0/16"]
     dns_servers         = ["10.0.0.4"]
 
@@ -65,7 +65,7 @@ virtual_networks = {
   vnet2 = {
     name                = "rakeshvnet02"
     location            = "centralindia"
-    resource_group_name = "rg01"
+    resource_group_name = "rakesh-rg"
     address_space       = ["10.1.0.0/16"]
     dns_servers         = ["10.1.0.4"]
 
@@ -91,7 +91,7 @@ nsgs = {
   nsg1 = {
     name                = "jumpnsg"
     location            = "centralindia"
-    resource_group_name = "rg01"
+    resource_group_name = "rakesh-rg"
     tags = {
       environment = "dev"
       owner       = "rakesh"
@@ -128,9 +128,9 @@ nsgs = {
 
 kvs = {
   kv1 = {
-    name                        = "rakeshkv"
+    name                        = "rakeshkv01"
     location                    = "centralindia"
-    resource_group_name         = "rg01"
+    resource_group_name         = "rakesh-rg"
     enabled_for_disk_encryption = true
     soft_delete_retention_days  = 30
     purge_protection_enabled    = true
@@ -149,40 +149,40 @@ kv_secrets = {
   kvs1 = {
     key_vault_secret_name  = "vm1-username"
     key_vault_secret_value = "azureuser"
-    key_vault_name         = "rakeshkv"
-    resource_group_name    = "rg01"
+    key_vault_name         = "rakeshkv01"
+    resource_group_name    = "rakesh-rg"
   }
 
   kvs2 = {
     key_vault_secret_name  = "vm1-password"
     key_vault_secret_value = "Password@@12345"
-    key_vault_name         = "rakeshkv"
-    resource_group_name    = "rg01"
+    key_vault_name         = "rakeshkv01"
+    resource_group_name    = "rakesh-rg"
   }
 
   kvs3 = {
     key_vault_secret_name  = "db1-username"
     key_vault_secret_value = "azureuser"
-    key_vault_name         = "rakeshkv"
-    resource_group_name    = "rg01"
+    key_vault_name         = "rakeshkv01"
+    resource_group_name    = "rakesh-rg"
   }
 
   kvs3 = {
     key_vault_secret_name  = "db1-password"
     key_vault_secret_value = "Password@@12345"
-    key_vault_name         = "rakeshkv"
-    resource_group_name    = "rg01"
+    key_vault_name         = "rakeshkv01"
+    resource_group_name    = "rakesh-rg"
   }
 }
 
 
-resource_group_name = "rg01"
+resource_group_name = "rakesh-rg"
 
 # public ip
 pips = {
   pip1 = {
     name                = "rakeshpip1"
-    resource_group_name = "rg01"
+    resource_group_name = "rakesh-rg"
     location            = "centralindia"
     allocation_method   = "Static"
     tags = {
@@ -209,10 +209,10 @@ vms = {
     subnet_name                     = "rakesh-subnet-01"
     vnet_name                       = "rakeshvnet01"
     pip_name                        = "rakeshpip1"
-    key_vault_name                  = "rakeshkv"
+    key_vault_name                  = "rakeshkv01"
     username                        = "vm1-username"
     password                        = "vm1-password"
-    resource_group_name             = "rg01"
+    resource_group_name             = "rakesh-rg"
     location                        = "centralindia"
     size                            = "Standard_F2"
     disable_password_authentication = false
@@ -263,7 +263,7 @@ kubernetes_clusters = {
     role_definition_name             = "Acrpull"
     aks_name                         = "rakeshakscluster"
     location                         = "centralindia"
-    resource_group_name              = "rg01"
+    resource_group_name              = "rakesh-rg"
     dns_prefix                       = "rakesh-dev"
     tags = {
       environment = "dev"
@@ -289,7 +289,7 @@ kubernetes_clusters = {
 databases = {
   "db1" = {
     dbserver_name       = "rakeshdbs01"
-    resource_group_name = "rg01"
+    resource_group_name = "rakesh-rg"
     location            = "centralindia"
     version             = "12.0"
     tags = {
@@ -298,7 +298,7 @@ databases = {
       project     = "terraform-azure"
     }
     sql_database_name = "rakeshsqldb01"
-    key_vault_name    = "rakeshkv"
+    key_vault_name    = "rakeshkv01"
     username          = "vm1-username"
     password          = "vm1-password"
     collation         = "SQL_Latin1_General_CP1_CI_AS"
