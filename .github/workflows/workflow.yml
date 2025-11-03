@@ -49,7 +49,7 @@ jobs:
       
       - name: terraform plan
         working-directory: ./environment/dev
-        run: terraform plN -out=tfplan
+        run: terraform plan
         
   apply:
     runs-on: ubuntu-latest
