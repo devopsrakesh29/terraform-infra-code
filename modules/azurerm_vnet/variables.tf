@@ -19,7 +19,7 @@ variable "virtual_networks" {
       enforcement = string
     }))
 
-    subnets = optional(list(object({
+    subnets = optional(map(object({
       name                              = string
       address_prefixes                  = list(string)
       security_group                    = optional(string)

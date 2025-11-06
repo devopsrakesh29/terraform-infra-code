@@ -47,19 +47,23 @@ virtual_networks = {
     address_space       = ["10.0.0.0/16"]
     dns_servers         = ["10.0.0.4"]
 
-    subnets = [
-      {
+    subnets = {
+      subnet1= {
         name             = "rakesh-subnet-01"
         address_prefixes = ["10.0.1.0/24"]
+      }
 
-      },
-
-      {
+      subnet2= {
         name             = "rakesh-subnet-02"
         address_prefixes = ["10.0.2.0/24"]
+      }
+
+      subnet3 = {
+        name             = "AzureBastionSubnet"
+        address_prefixes = ["10.0.3.0/24"]
 
       }
-    ]
+    }
   }
 
   vnet2 = {
@@ -69,18 +73,18 @@ virtual_networks = {
     address_space       = ["10.1.0.0/16"]
     dns_servers         = ["10.1.0.4"]
 
-    subnets = [
-      {
+    subnets = {
+      subnet1= {
         name             = "rakesh-subnet-03"
         address_prefixes = ["10.1.1.0/24"]
       },
 
-      {
+      subnet2={
         name             = "rakesh-subnet-04"
         address_prefixes = ["10.1.2.0/24"]
       }
 
-    ]
+    }
   }
 }
 
@@ -167,7 +171,7 @@ kv_secrets = {
     resource_group_name    = "rakesh-rg"
   }
 
-  kvs3 = {
+  kvs4 = {
     key_vault_secret_name  = "db1-password"
     key_vault_secret_value = "Password@@12345"
     key_vault_name         = "rakeshkv006"
@@ -182,6 +186,17 @@ resource_group_name = "rakesh-rg"
 pips = {
   pip1 = {
     name                = "rakeshpip1"
+    resource_group_name = "rakesh-rg"
+    location            = "centralindia"
+    allocation_method   = "Static"
+    tags = {
+      environment = "dev"
+      owner       = "rakesh"
+      project     = "terraform-azure"
+    }
+  }
+  pip2 = {
+    name                = "rakeshpip2"
     resource_group_name = "rakesh-rg"
     location            = "centralindia"
     allocation_method   = "Static"
@@ -310,3 +325,18 @@ databases = {
   }
 }
 
+bastion_hosts = {
+  "bastion_host" = {
+    subnet_name         = "AzureBastionSubnet"
+    vnet_name           = "rakeshvnet01"
+    resource_group_name = "rakesh-rg"
+    pip_name            = "rakeshpip2"
+    bastion_name        = "rakeshbastion01"
+    location            = "centralindia"
+    ip_configurations = {
+      ip_configuration = {
+        name = "configuration"
+      }
+    }
+  }
+}

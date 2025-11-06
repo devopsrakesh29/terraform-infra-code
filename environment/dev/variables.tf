@@ -70,7 +70,7 @@ variable "virtual_networks" {
       enforcement = string
     }))
 
-    subnets = optional(list(object({
+    subnets = optional(map(object({
       name                              = string
       address_prefixes                  = list(string)
       security_group                    = optional(string)
@@ -274,5 +274,22 @@ variable "databases" {
     sku_name            = optional(string)
     enclave_type        = optional(string)
 
+  }))
+}
+############################################
+
+variable "bastion_hosts" {
+  type = map(object({
+
+    subnet_name         = string
+    vnet_name           = string
+    resource_group_name = string
+    pip_name            = string
+    bastion_name        = string
+    location            = string
+    ip_configurations = map(object({
+      name = string
+
+    }))
   }))
 }

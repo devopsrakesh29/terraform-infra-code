@@ -32,7 +32,7 @@ resource "azurerm_virtual_network" "vnet" {
   }
   # subnet blocks
   dynamic "subnet" {
-    for_each = each.value.subnets != null ? each.value.subnets : []
+    for_each = each.value.subnets != null ? each.value.subnets : {}
     content {
       name             = subnet.value.name
       address_prefixes = subnet.value.address_prefixes
