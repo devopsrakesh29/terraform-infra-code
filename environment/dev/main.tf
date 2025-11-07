@@ -137,11 +137,11 @@ module "database" {
 }
 
 #----------------------------------------------
-module "bastion_host" {
-  source = "../../modules/azurerm_bastion_host"
-  depends_on = [ module.public_ip, module.vnet ]
-  bastion_hosts= var.bastion_hosts
-  providers = {
-    azurerm = azurerm.vnet_provider
-  }
-}
+# module "bastion_host" {
+#   source = "../../modules/azurerm_bastion_host"
+#   depends_on = [ module.public_ip, module.vnet ]
+#   bastion_hosts= var.bastion_hosts
+#   providers = {
+#     azurerm = azurerm.vnet_provider
+#   }
+# }
