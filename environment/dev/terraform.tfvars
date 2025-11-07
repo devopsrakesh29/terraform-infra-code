@@ -195,17 +195,17 @@ pips = {
       project     = "terraform-azure"
     }
   }
-  pip2 = {
-    name                = "rakeshpip2"
-    resource_group_name = "rakesh-rg"
-    location            = "centralindia"
-    allocation_method   = "Static"
-    tags = {
-      environment = "dev"
-      owner       = "rakesh"
-      project     = "terraform-azure"
-    }
-  }
+  # pip2 = {
+  #   name                = "rakeshpip2"
+  #   resource_group_name = "rakesh-rg"
+  #   location            = "centralindia"
+  #   allocation_method   = "Static"
+  #   tags = {
+  #     environment = "dev"
+  #     owner       = "rakesh"
+  #     project     = "terraform-azure"
+  #   }
+  # }
 }
 
 
@@ -325,18 +325,18 @@ databases = {
   }
 }
 
-bastion_hosts = {
-  "bastion_host" = {
-    subnet_name         = "AzureBastionSubnet"
-    vnet_name           = "rakeshvnet01"
-    resource_group_name = "rakesh-rg"
-    pip_name            = "rakeshpip2"
-    bastion_name        = "rakeshbastion01"
-    location            = "centralindia"
-    ip_configurations = {
-      ip_configuration = {
-        name = "configuration"
-      }
-    }
-  }
-}
+# bastion_hosts = {
+#   "bastion_host" = {
+#     subnet_name         = "AzureBastionSubnet"
+#     vnet_name           = "rakeshvnet01"
+#     resource_group_name = "rakesh-rg"
+#     pip_name            = "rakeshpip2"
+#     bastion_name        = "rakeshbastion01"
+#     location            = "centralindia"
+#     ip_configurations = {
+#       ip_configuration = {
+#         name = "configuration"
+#       }
+#     }
+#   }
+# }
