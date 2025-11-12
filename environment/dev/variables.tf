@@ -1,14 +1,14 @@
 # # RG variables
 
-# variable "resource_groups" {
-#   type = map(object({
-#     name     = string
-#     location = string
-#     tags     = map(string)
+variable "resource_groups" {
+  type = map(object({
+    name     = string
+    location = string
+    tags     = map(string)
 
-#   }))
+  }))
 
-# }
+ }
 
 # # storage account variables
 # variable "storage_accounts" {

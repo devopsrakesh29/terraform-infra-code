@@ -23,17 +23,17 @@
 #   }
 # }
 
-# resource_groups = {
-#   "rg01" = {
-#     name     = "rakesh-rg"
-#     location = "East US"
-#     tags = {
-#       environment = "dev"
-#       owner       = "rakesh"
-#       project     = "terraform-azure"
-#     }
-#   }
-# }
+resource_groups = {
+  "rg01" = {
+    name     = "rakesh-rg"
+    location = "East US"
+    tags = {
+      environment = "dev"
+      owner       = "rakesh"
+      project     = "terraform-azure"
+    }
+  }
+}
 
 rg_subscription_id              = "b37d1b55-e5e8-4acb-a848-fd89484f0997"
 storage_account_subscription_id = "b37d1b55-e5e8-4acb-a848-fd89484f0997"

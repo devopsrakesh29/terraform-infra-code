@@ -1,14 +1,14 @@
-# module "resource_group" {
-#   source = "../../modules/azurerm_resource_group"
-#   providers = {
-#     azurerm = azurerm.resource_group_provider
-#   }
-#   for_each    = var.resource_groups
-#   rg_name     = each.value.name
-#   rg_location = each.value.location
-#   rg_tags     = each.value.tags
-#   # rg_subscription_id = var.rg_subscription_id
-# }
+module "resource_group" {
+  source = "../../modules/azurerm_resource_group"
+  providers = {
+    azurerm = azurerm.resource_group_provider
+  }
+  for_each    = var.resource_groups
+  rg_name     = each.value.name
+  rg_location = each.value.location
+  rg_tags     = each.value.tags
+  # rg_subscription_id = var.rg_subscription_id
+}
 # #---------------------------------------------
 # module "storage_account" {
 #   source     = "../../modules/azurerm_storage_account"
