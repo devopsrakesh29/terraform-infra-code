@@ -10,7 +10,7 @@ variable "kubernetes_clusters" {
     tags                = optional(map(string))
     role_definition_name = string
     skip_service_principal_aad_check = bool
-    ingress_application_gateway = optional(map(objec({
+    ingress_application_gateway = optional(map(object({
       gateway_name   = optional(string)
     })))    
     default_node_pool = map(object({
