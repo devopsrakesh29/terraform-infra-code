@@ -1,6 +1,6 @@
 #--- ACR 
 resource "azurerm_container_registry" "acr" {
-  for_each = var.kubernetes_clusters
+  for_each            = var.kubernetes_clusters
   name                = each.value.acr_name
   resource_group_name = each.value.resource_group_name
   location            = each.value.location
@@ -34,11 +34,20 @@ resource "azurerm_kubernetes_cluster" "aks" {
       type = identity.value.type # "SystemAssigned"
     }
   }
+  dynamic "ingress_application_gateway" {
+
+    for_each = each.value.ingress_application_gateway != null ? each.value.ingress_application_gateway : {}
+
+    content {
+      gateway_name = ingress_application_gateway.value.gateway_name
+    }
+
+  }
 }
 
 #----Attaching a Container Registry to a Kubernetes Cluster
 resource "azurerm_role_assignment" "ars" {
-  for_each = var.kubernetes_clusters
+  for_each                         = var.kubernetes_clusters
   principal_id                     = azurerm_kubernetes_cluster.aks[each.key].kubelet_identity[0].object_id
   role_definition_name             = each.value.role_definition_name #"AcrPull"
   scope                            = azurerm_container_registry.acr[each.key].id
