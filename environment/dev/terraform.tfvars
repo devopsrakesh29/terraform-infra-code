@@ -274,11 +274,11 @@ kubernetes_clusters = {
     location                         = "centralindia"
     resource_group_name              = "rakesh-rg"
     dns_prefix                       = "rakesh-dev"
-    ingress_application_gateway = {
-      app_gw={
-      gateway_name   = "ingress-app-gw"
-    }
-    }    
+    # ingress_application_gateway = {
+    #   app_gw={
+    #   gateway_name   = "ingress-app-gw"
+    # }
+    # }    
     tags = {
       environment = "dev"
       owner       = "rakesh"

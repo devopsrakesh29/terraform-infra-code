@@ -34,15 +34,15 @@ resource "azurerm_kubernetes_cluster" "aks" {
       type = identity.value.type # "SystemAssigned"
     }
   }
-  dynamic "ingress_application_gateway" {
+  # dynamic "ingress_application_gateway" {
 
-    for_each = each.value.ingress_application_gateway != null ? each.value.ingress_application_gateway : {}
+  #   for_each = each.value.ingress_application_gateway != null ? each.value.ingress_application_gateway : {}
 
-    content {
-      gateway_name = ingress_application_gateway.value.gateway_name
-    }
+  #   content {
+  #     gateway_name = ingress_application_gateway.value.gateway_name
+  #   }
 
-  }
+  # }
 }
 
 #----Attaching a Container Registry to a Kubernetes Cluster
