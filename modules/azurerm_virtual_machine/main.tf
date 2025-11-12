@@ -62,6 +62,6 @@ resource "azurerm_linux_virtual_machine" "vm" {
       version   = source_image_reference.value.version   #"latest"
     }
   }
-  custom_data = base64encode(each.value.custom_data)
+  custom_data = base64encode(file("${each.value.custom_data}"))
 }
 

@@ -132,7 +132,7 @@ nsgs = {
 
 kvs = {
   kv1 = {
-    name                        = "rakeshkv1002"
+    name                        = "rakeshkv1200"
     location                    = "centralindia"
     resource_group_name         = "rakesh-rg"
     enabled_for_disk_encryption = true
@@ -153,28 +153,28 @@ kv_secrets = {
   kvs1 = {
     key_vault_secret_name  = "vm1-username"
     key_vault_secret_value = "azureuser"
-    key_vault_name         = "rakeshkv1002"
+    key_vault_name         = "rakeshkv1200"
     resource_group_name    = "rakesh-rg"
   }
 
   kvs2 = {
     key_vault_secret_name  = "vm1-password"
     key_vault_secret_value = "Password@@12345"
-    key_vault_name         = "rakeshkv1002"
+    key_vault_name         = "rakeshkv1200"
     resource_group_name    = "rakesh-rg"
   }
 
   kvs3 = {
     key_vault_secret_name  = "db1-username"
     key_vault_secret_value = "azureuser"
-    key_vault_name         = "rakeshkv1002"
+    key_vault_name         = "rakeshkv1200"
     resource_group_name    = "rakesh-rg"
   }
 
   kvs4 = {
     key_vault_secret_name  = "db1-password"
     key_vault_secret_value = "Password@@12345"
-    key_vault_name         = "rakeshkv1002"
+    key_vault_name         = "rakeshkv1200"
     resource_group_name    = "rakesh-rg"
   }
 }
@@ -224,7 +224,7 @@ vms = {
     subnet_name                     = "rakesh-subnet-01"
     vnet_name                       = "rakeshvnet01"
     pip_name                        = "rakeshpip1"
-    key_vault_name                  = "rakeshkv1002"
+    key_vault_name                  = "rakeshkv1200"
     username                        = "vm1-username"
     password                        = "vm1-password"
     resource_group_name             = "rakesh-rg"
@@ -259,13 +259,7 @@ vms = {
 
       }
     }
-    custom_data = <<EOF
-#!/bin/bash
-sudo apt-get update -y
-sudo apt-get install apache2 -y
-sudo systemctl enable apache2
-sudo systemctl start apache2
-EOF
+    custom_data = "script.sh"
 
   }
 }
@@ -313,7 +307,7 @@ databases = {
       project     = "terraform-azure"
     }
     sql_database_name = "rakeshsqldb01"
-    key_vault_name    = "rakeshkv1002"
+    key_vault_name    = "rakeshkv1200"
     username          = "vm1-username"
     password          = "vm1-password"
     collation         = "SQL_Latin1_General_CP1_CI_AS"
