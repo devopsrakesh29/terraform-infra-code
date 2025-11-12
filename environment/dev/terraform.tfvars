@@ -288,7 +288,7 @@ kubernetes_clusters = {
       pool1 = {
         name       = "default"
         node_count = 1
-        vm_size    = "Standard_D2pds_v5"
+        vm_size    = "Standard_D2as_v5"
       }
     }
 
