@@ -52,26 +52,26 @@ module "resource_group" {
 
 # #---------------------------------------------
 
-# module "key_vault" {
-#   source = "../../modules/azurerm_key_vault"
-#   depends_on = [module.resource_group]
-#   providers = {
-#     azurerm = azurerm.resource_group_provider
-#   }
-#   kvs = var.kvs
-# }
+module "key_vault" {
+  source = "../../modules/azurerm_key_vault"
+  depends_on = [module.resource_group]
+  providers = {
+    azurerm = azurerm.resource_group_provider
+  }
+  kvs = var.kvs
+}
 
-# #---------------------------------------------
+#---------------------------------------------
 
-# module "kv_secret" {
-#   depends_on = [module.key_vault]
-#   source     = "../../modules/azurerm_kv_secret"
-#   providers = {
-#     azurerm = azurerm.resource_group_provider
-#   }
-#   kv_secrets          = var.kv_secrets
+module "kv_secret" {
+  depends_on = [module.key_vault]
+  source     = "../../modules/azurerm_kv_secret"
+  providers = {
+    azurerm = azurerm.resource_group_provider
+  }
+  kv_secrets          = var.kv_secrets
   
-# }
+}
 
 # #---------------------------------------------
 
@@ -125,16 +125,16 @@ module "k8s_cluster" {
 
 #----------------------------------------------
 
-# module "database" {
-#   source = "../../modules/azurerm_db_services"
-#   depends_on = [ module.kv_secret, module.storage_account ]
-#      providers = {
-#     azurerm = azurerm.resource_group_provider
-#   }
+module "database" {
+  source = "../../modules/azurerm_db_services"
+  depends_on = [ module.kv_secret, module.storage_account ]
+     providers = {
+    azurerm = azurerm.resource_group_provider
+  }
 
-#   databases = var.databases
+  databases = var.databases
   
-# }
+}
 
 #----------------------------------------------
 # module "bastion_host" {
