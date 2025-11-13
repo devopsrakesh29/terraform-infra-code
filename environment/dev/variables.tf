@@ -115,43 +115,43 @@ variable "rg_subscription_id" {
 # }
 
 # ########################################################
-# # key vault variables
+# key vault variables
 
-# variable "kvs" {
-#   type = map(object({
-#     name                            = string
-#     location                        = string
-#     resource_group_name             = string
-#     enabled_for_disk_encryption     = optional(bool) # true
-#     soft_delete_retention_days      = optional(number)
-#     purge_protection_enabled        = optional(bool)
-#     enabled_for_deployment          = optional(bool) # bool optional true
-#     enabled_for_template_deployment = optional(bool) # bool optional true
-#     rbac_authorization_enabled      = optional(bool) # optional bool false
-#     public_network_access_enabled   = optional(bool) # optional bool default true
-#     tags                            = optional(map(string))
-#     sku_name                        = string
+variable "kvs" {
+  type = map(object({
+    name                            = string
+    location                        = string
+    resource_group_name             = string
+    enabled_for_disk_encryption     = optional(bool) # true
+    soft_delete_retention_days      = optional(number)
+    purge_protection_enabled        = optional(bool)
+    enabled_for_deployment          = optional(bool) # bool optional true
+    enabled_for_template_deployment = optional(bool) # bool optional true
+    rbac_authorization_enabled      = optional(bool) # optional bool false
+    public_network_access_enabled   = optional(bool) # optional bool default true
+    tags                            = optional(map(string))
+    sku_name                        = string
 
-#     network_acls = optional(map(object({
-#       bypass                     = string
-#       default_action             = string
-#       ip_rules                   = optional(string)
-#       virtual_network_subnet_ids = optional(list(string))
+    network_acls = optional(map(object({
+      bypass                     = string
+      default_action             = string
+      ip_rules                   = optional(string)
+      virtual_network_subnet_ids = optional(list(string))
 
-#     })))
-#   }))
-# }
+    })))
+  }))
+}
 
 # ########################################################
 
-# variable "kv_secrets" {
-#   type = map(object({
-#     key_vault_secret_name  = string
-#     key_vault_secret_value = string
-#     key_vault_name         = string
-#     resource_group_name    = string
-#   }))
-# }
+variable "kv_secrets" {
+  type = map(object({
+    key_vault_secret_name  = string
+    key_vault_secret_value = string
+    key_vault_name         = string
+    resource_group_name    = string
+  }))
+}
 
 # variable "resource_group_name" {
 #   type = string
@@ -262,25 +262,25 @@ variable "kubernetes_clusters" {
 #####################################
 
 
-# variable "databases" {
-#   type = map(object({
-#     dbserver_name       = string
-#     resource_group_name = string
-#     location            = string
-#     version             = string
-#     tags                = optional(map(string))
-#     sql_database_name   = string
-#     key_vault_name      = string
-#     username            = string
-#     password            = string
-#     collation           = optional(string)
-#     license_type        = optional(string)
-#     max_size_gb         = optional(string)
-#     sku_name            = optional(string)
-#     enclave_type        = optional(string)
+variable "databases" {
+  type = map(object({
+    dbserver_name       = string
+    resource_group_name = string
+    location            = string
+    version             = string
+    tags                = optional(map(string))
+    sql_database_name   = string
+    key_vault_name      = string
+    username            = string
+    password            = string
+    collation           = optional(string)
+    license_type        = optional(string)
+    max_size_gb         = optional(string)
+    sku_name            = optional(string)
+    enclave_type        = optional(string)
 
-#   }))
-# }
+  }))
+}
 ############################################
 
 # variable "bastion_hosts" {

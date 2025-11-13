@@ -128,56 +128,56 @@ vnet_subscription_id            = "b37d1b55-e5e8-4acb-a848-fd89484f0997"
 #   }
 # }
 
-# # key vault
+# key vault
 
-# kvs = {
-#   kv1 = {
-#     name                        = "rakeshkv1200"
-#     location                    = "centralindia"
-#     resource_group_name         = "rakesh-rg"
-#     enabled_for_disk_encryption = true
-#     soft_delete_retention_days  = 30
-#     purge_protection_enabled    = true
-#     sku_name                    = "standard"
-#     tags = {
-#       environment = "dev"
-#       owner       = "rakesh"
-#       project     = "terraform-azure"
-#     }
-#   }
-# }
+kvs = {
+  kv1 = {
+    name                        = "rakeshkv1200"
+    location                    = "centralindia"
+    resource_group_name         = "rakesh-rg"
+    enabled_for_disk_encryption = true
+    soft_delete_retention_days  = 30
+    purge_protection_enabled    = true
+    sku_name                    = "standard"
+    tags = {
+      environment = "dev"
+      owner       = "rakesh"
+      project     = "terraform-azure"
+    }
+  }
+}
 
-# # key vault secret
+# key vault secret
 
-# kv_secrets = {
-#   kvs1 = {
-#     key_vault_secret_name  = "vm1-username"
-#     key_vault_secret_value = "azureuser"
-#     key_vault_name         = "rakeshkv1200"
-#     resource_group_name    = "rakesh-rg"
-#   }
+kv_secrets = {
+  kvs1 = {
+    key_vault_secret_name  = "vm1-username"
+    key_vault_secret_value = "azureuser"
+    key_vault_name         = "rakeshkv1200"
+    resource_group_name    = "rakesh-rg"
+  }
 
-#   kvs2 = {
-#     key_vault_secret_name  = "vm1-password"
-#     key_vault_secret_value = "Password@@12345"
-#     key_vault_name         = "rakeshkv1200"
-#     resource_group_name    = "rakesh-rg"
-#   }
+  kvs2 = {
+    key_vault_secret_name  = "vm1-password"
+    key_vault_secret_value = "Password@@12345"
+    key_vault_name         = "rakeshkv1200"
+    resource_group_name    = "rakesh-rg"
+  }
 
-#   kvs3 = {
-#     key_vault_secret_name  = "db1-username"
-#     key_vault_secret_value = "azureuser"
-#     key_vault_name         = "rakeshkv1200"
-#     resource_group_name    = "rakesh-rg"
-#   }
+  kvs3 = {
+    key_vault_secret_name  = "db1-username"
+    key_vault_secret_value = "azureuser"
+    key_vault_name         = "rakeshkv1200"
+    resource_group_name    = "rakesh-rg"
+  }
 
-#   kvs4 = {
-#     key_vault_secret_name  = "db1-password"
-#     key_vault_secret_value = "Password@@12345"
-#     key_vault_name         = "rakeshkv1200"
-#     resource_group_name    = "rakesh-rg"
-#   }
-# }
+  kvs4 = {
+    key_vault_secret_name  = "db1-password"
+    key_vault_secret_value = "Password@@12345"
+    key_vault_name         = "rakeshkv1200"
+    resource_group_name    = "rakesh-rg"
+  }
+}
 
 
 # resource_group_name = "rakesh-rg"
@@ -300,29 +300,29 @@ kubernetes_clusters = {
   }
 }
 
-# databases = {
-#   "db1" = {
-#     dbserver_name       = "rakeshdbs01"
-#     resource_group_name = "rakesh-rg"
-#     location            = "centralindia"
-#     version             = "12.0"
-#     tags = {
-#       environment = "dev"
-#       owner       = "rakesh"
-#       project     = "terraform-azure"
-#     }
-#     sql_database_name = "rakeshsqldb01"
-#     key_vault_name    = "rakeshkv1200"
-#     username          = "vm1-username"
-#     password          = "vm1-password"
-#     collation         = "SQL_Latin1_General_CP1_CI_AS"
-#     license_type      = "LicenseIncluded"
-#     max_size_gb       = 2
-#     sku_name          = "S0"
-#     enclave_type      = "VBS"
+databases = {
+  "db1" = {
+    dbserver_name       = "rakeshdbs01"
+    resource_group_name = "rakesh-rg"
+    location            = "centralindia"
+    version             = "12.0"
+    tags = {
+      environment = "dev"
+      owner       = "rakesh"
+      project     = "terraform-azure"
+    }
+    sql_database_name = "rakeshsqldb01"
+    key_vault_name    = "rakeshkv1200"
+    username          = "vm1-username"
+    password          = "vm1-password"
+    collation         = "SQL_Latin1_General_CP1_CI_AS"
+    license_type      = "LicenseIncluded"
+    max_size_gb       = 2
+    sku_name          = "S0"
+    enclave_type      = "VBS"
 
-#   }
-# }
+  }
+}
 
 # # bastion_hosts = {
 # #   "bastion_host" = {
