@@ -127,7 +127,7 @@ module "k8s_cluster" {
 
 module "database" {
   source = "../../modules/azurerm_db_services"
-  depends_on = [ module.kv_secret, module.storage_account ]
+  depends_on = [ module.kv_secret ]
      providers = {
     azurerm = azurerm.resource_group_provider
   }
