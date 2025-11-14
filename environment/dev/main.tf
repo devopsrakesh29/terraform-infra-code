@@ -124,7 +124,6 @@ module "k8s_cluster" {
 }
 
 #----------------------------------------------
-
 module "database" {
   source = "../../modules/azurerm_db_services"
   depends_on = [ module.kv_secret ]
@@ -133,7 +132,6 @@ module "database" {
   }
 
   databases = var.databases
-  
 }
 
 #----------------------------------------------
